@@ -1,4 +1,5 @@
 import json
+import time
 from flask import Blueprint, render_template, request
 
 from app.stocks_service import (
@@ -38,6 +39,9 @@ def compare_post():
         data_a = fetch_daily_time_series(sym_a)
         pts_a = parse_time_series_points(data_a)
         df_a = points_to_dataframe(pts_a)
+
+        # small delay to reduce Alpha Vantage rate-limit failures
+        time.sleep(12)
 
         data_b = fetch_daily_time_series(sym_b)
         pts_b = parse_time_series_points(data_b)

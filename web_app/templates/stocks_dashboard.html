@@ -1,0 +1,32 @@
+{% extends "bootstrap5_layout.html" %}
+{% block content %}
+  <div class="d-flex align-items-center justify-content-between">
+    <h2 class="mb-0">{{ symbol }} Dashboard</h2>
+
+    <form method="POST" action="/watchlist/add">
+      <input type="hidden" name="symbol" value="{{ symbol }}"/>
+      <button class="btn btn-success" type="submit">Add to Watchlist</button>
+    </form>
+  </div>
+
+  <p class="text-muted mt-2">
+    Latest close: <strong>{{ latest_close }}</strong> ({{ latest_date }})
+  </p>
+
+  <div id="chart" style="height:420px;"></div>
+
+  <script>
+    const series = {{ series_json | safe }};
+    const x = series.map(d => d.date);
+    const y = series.map(d => d.close);
+
+    Plotly.newPlot("chart", [{
+      x: x,
+      y: y,
+      type: "scatter"
+    }], {
+      title: "{{ symbol }} Close Price",
+      margin: { t: 40 }
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "bootstrap5_layout.html" %}
+{% block content %}
+  <h2>Comparison</h2>
+  <div id="compare-chart" style="height:450px;"></div>
+
+  <script>
+    const payload = {{ payload_json | safe }};
+    const a = payload.a;
+    const b = payload.b;
+
+    Plotly.newPlot("compare-chart", [
+      { x: a.series.map(d=>d.date), y: a.series.map(d=>d.close), type:"scatter", name: a.symbol },
+      { x: b.series.map(d=>d.date), y: b.series.map(d=>d.close), type:"scatter", name: b.symbol }
+    ], {
+      title: `${a.symbol} vs ${b.symbol}`,
+      margin: { t: 40 }
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "bootstrap5_layout.html" %}
+{% block content %}
+  <h2>Compare Two Stocks</h2>
+
+  <form method="POST" action="/stocks/compare" class="row g-3 mt-1">
+    <div class="col-md-6">
+      <label class="form-label">Symbol A</label>
+      <input name="symbol_a" class="form-control" placeholder="AAPL" required />
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Symbol B</label>
+      <input name="symbol_b" class="form-control" placeholder="MSFT" required />
+    </div>
+
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Compare</button>
+    </div>
+  </form>
+{% endblock %}

@@ -1,0 +1,16 @@
+# secrets
+.env
+
+# python
+__pycache__/
+*.pyc
+
+# virtual envs
+.venv/
+venv/
+
+# os junk
+.DS_Store
+
+# sqlite
+*.sqlite3

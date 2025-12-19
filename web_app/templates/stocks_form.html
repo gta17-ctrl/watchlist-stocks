@@ -1,0 +1,15 @@
+{% extends "bootstrap5_layout.html" %}
+{% block content %}
+  <h2>Stock Dashboard</h2>
+
+  <form method="POST" action="/stocks/dashboard" class="row g-3 mt-1">
+    <div class="col-md-6">
+      <label class="form-label">Symbol</label>
+      <input name="symbol" class="form-control" placeholder="AAPL" required />
+    </div>
+
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Go</button>
+    </div>
+  </form>
+{% endblock %}

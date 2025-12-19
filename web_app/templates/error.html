@@ -1,0 +1,9 @@
+{% extends "bootstrap5_layout.html" %}
+{% block content %}
+  <div class="alert alert-danger">
+    <h4 class="alert-heading">Something went wrong</h4>
+    <p class="mb-0">{{ message }}</p>
+  </div>
+
+  <a class="btn btn-secondary mt-3" href="/stocks/form">Back</a>
+{% endblock %}
